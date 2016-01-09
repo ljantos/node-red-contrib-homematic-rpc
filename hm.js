@@ -9,15 +9,12 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
 
-
         node.on('close', function(done) {
 
 		    clearInterval(keepAliveInterval);
 		    
 		    initRemoteService();
-
-		    rpcServer.httpServer.kill(function() {
-		        
+		    rpcServer.httpServer.kill(function() {  
 		        node.log("Server konnte erfolgreich gestoppt werden");
 		        done();
 		    }); 
@@ -92,7 +89,6 @@ module.exports = function(RED) {
 					
 					if (err) {
 						node.warn("1. " + err);
-
 						node.status({fill:"red",shape:"dot",text:"init() failed at " + node.remoteHostIp});
 					}
 					else {
@@ -108,8 +104,7 @@ module.exports = function(RED) {
 			rpcServer = xmlrpc.createServer({ host: node.rpcListenIp, port: node.rpcListenPort });
 
 			killable(rpcServer.httpServer);
-
-			node.log( '>>> XML-RPC server listening on ' + node.rpcListenIp + ':' + (node.rpcListenPort) );
+			node.log( '>>> XML-RPC server listens on ' + node.rpcListenIp + ':' + (node.rpcListenPort) );
 	  
 			rpcServer.on('system.multicall', function(method, params, callback) {
 				var response = [];
