@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('hm',{
+        category: 'input',
+        paletteLabel: "homematic-rpc",
+        color: '#C0DEED',
+        defaults: {
+            name: {value:''},
+            hostName: {value:'', required:true},
+            hostPort: {value:'2001', required:true},
+            localRpcPort: {value:'2015', required:true},
+            localIpAddress: {value:'', required:false}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return this.name||"Homematic RPC";
+        }
+        
+    });
+</script>
+
+<script type="text/x-red" data-template-name="hm">
+    <div class="form-row">
+		 <label for="node-input-hostName"><i class="icon-tag"></i> Bidcos host</label>
+		 <input type="text" id="node-input-hostName" placeholder="IP / Hostname">
+	 </div>
+	 <div class="form-row">
+        <label for="node-input-hostType"><i class="fa fa-tasks"></i> Bidcos Type</label>
+        <select type="text" id="node-input-hostType" style="width:72%;">
+        <option value="2001">Bidcos RF (Port 2001)</option>
+        <option value="2002">Bidcos Wired (Port 2002)</option>
+        </select>
+    </div>
+	<div class="form-row">
+		<label for="node-input-localIpAddress"><i class="icon-tag"></i>Local IP</label>
+		<input type="text" id="node-input-localIpAddress" placeholder="Optional local IP (auto detection)">
+	</div> 
+	<div class="form-row">
+		<label for="node-input-localRpcPort"><i class="icon-tag"></i>Local tcp Port</label>
+		<input type="text" id="node-input-localRpcPort" placeholder="Port">
+	</div>
+	<div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="hm-help">
+    <p>Integration of the Homematic system using the XMLRPC interface of network attached Bidcos device like the CCU. With this node you are able to recieve event / device notifications</p>
+	<p><b>Bidcos host</b> - IP address or hostname of the Bidcos gateway like a CCU1/2</p>
+	<p><b>Bidcos type</b> - <i>Bidcos RF</i> for wireless Homematic devices and <i>Bidcos Wired</i> for wired devices</p>
+	<p><b>Local ip:port</b> - Optional IP address and tcp port which is used for the local callback XMLRPC-Server</p>
+</script>

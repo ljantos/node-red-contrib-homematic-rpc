@@ -1,0 +1,29 @@
+{
+    "name"         : "node-red-contrib-homematic-rpc",
+    "version"      : "1.0.0",
+    "description"  : "Homematic XML-RPC integration for node-red",
+    "author": "Lycien Jantos",
+    "dependencies": {
+        "killable": "1.0.0",
+        "homematic-xmlrpc": ">=1.0.1",
+        "ip": "1.1.0",
+        "crypto": ">=0.0.3"
+    },
+    "keywords": [ 
+        "node-red",
+        "homematic",
+        "xmlrpc",
+        "home automation",
+        "iot",
+        "flows",
+        "xml-rpc" ],
+    "node-red"     : {
+        "nodes": {
+            "homematic-rpc": "hm.js"
+        }
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "license": "MIT"
+}
