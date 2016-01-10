@@ -15,7 +15,7 @@ module.exports = function(RED) {
 		    
 		    initRemoteService();
 		    rpcServer.httpServer.kill(function() {  
-		        node.log("Server konnte erfolgreich gestoppt werden");
+		        node.log("RPC server stopped...");
 		        done();
 		    }); 
 		});
@@ -40,7 +40,7 @@ module.exports = function(RED) {
 		var lastTouch = 0;
 		var methods = {
 			event: function (err, params) {
-				node.log('RPC call -hm_event- ');
+				//node.log('RPC call -hm_event- ');
 
 				var topic = "hm_event";
 				var payload = {};
@@ -56,7 +56,7 @@ module.exports = function(RED) {
 				return '';
 			},
 			newDevices: function (err, params) {
-				node.log('RPC call -newDevices- recvieved');
+				//node.log('RPC call -newDevices- recvieved');
 				
 				var result = {};
 				result.topic = "hm_newDevices";
